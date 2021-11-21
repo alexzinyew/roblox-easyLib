@@ -102,15 +102,14 @@ function library:createWindow(name,data)
 
 	topButton.MouseButton1Click:Connect(function()
 		local ti = TweenInfo.new(.15,Enum.EasingStyle.Sine,Enum.EasingDirection.InOut)
-		local ti2 = TweenInfo.new(.5,Enum.EasingStyle.Sine,Enum.EasingDirection.InOut)
 		local openbutton = ts:Create(topButton,ti,{Rotation = 180})
 		local ti = TweenInfo.new(.15,Enum.EasingStyle.Sine,Enum.EasingDirection.InOut)
 		local closebutton = ts:Create(topButton,ti,{Rotation = 0})
 		local ti = TweenInfo.new(.15,Enum.EasingStyle.Sine,Enum.EasingDirection.InOut)
-		local opencontainer = ts:Create(container,ti2,{Size = UDim2.new(1, 0,8.605, 0)})
+		local opencontainer = ts:Create(container,ti,{Size = UDim2.new(1, 0,8.605, 0)})
 		local ti = TweenInfo.new(.15,Enum.EasingStyle.Sine,Enum.EasingDirection.InOut)
-		local closecontainer = ts:Create(container,ti2,{Size = UDim2.new(1,0,0,0)})
-			
+		local closecontainer = ts:Create(container,ti,{Size = UDim2.new(1,0,0,0)})
+		
 		open=not open
 		if open then
 			openbutton:Play()
@@ -142,6 +141,19 @@ function library:createWindow(name,data)
 		button.MouseButton1Click:Connect(function()
 			callback()
 		end)
+	end
+	
+	function functions:makeLabel(text,color)
+		local label = library:newItem("TextLabel",{
+			Size = UDim2.new(0.96, 0,0.093, 0);
+			BorderSizePixel = 0;
+			BackgroundColor3 = GetColorDelta(bgrColor,5);
+			Font = Enum.Font.Ubuntu;
+			TextColor3 = Color3.fromRGB(255,255,255);
+			TextScaled = true;
+			Text = tostring(text);
+			Parent = container;
+		})
 	end
 	
 	
