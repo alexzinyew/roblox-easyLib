@@ -2,6 +2,7 @@ local library = {}
 local uis = game:GetService("UserInputService")
 local windows = 0
 local ui
+local ts = game:GetService("TweenService")
 
 local function draggable(obj)
 	local globals = {}
@@ -54,7 +55,7 @@ end
 function library:createWindow(name,data)
 	local drag = data[1]
 	local bgrColor = data[2]
-	
+	local open = true
 	windows = windows + 1 
 	
 	local topFrame = self:newItem("Frame",{
@@ -93,11 +94,33 @@ function library:createWindow(name,data)
 		Parent = topFrame;
 		Name = "Container";
 		Position = UDim2.new(0, 0,1,0);
-		Size = UDim2.new(1, 0,2.558, 0);
+		Size = UDim2.new(1, 0,8.605, 0);
 		Active = true;
 		BackgroundColor3 = GetColorDelta(bgrColor,10);
 		BorderSizePixel = 0
-	})
+})
+
+	topButton.MouseButton1Click:Connect(function()
+		local ti = TweenInfo.new(.15,Enum.EasingStyle.Sine,Enum.EasingDirection.InOut)
+		local ti2 = TweenInfo.new(.5,Enum.EasingStyle.Sine,Enum.EasingDirection.InOut)
+		local openbutton = ts:Create(topButton,ti,{Rotation = 180})
+		local ti = TweenInfo.new(.15,Enum.EasingStyle.Sine,Enum.EasingDirection.InOut)
+		local closebutton = ts:Create(topButton,ti,{Rotation = 0})
+		local ti = TweenInfo.new(.15,Enum.EasingStyle.Sine,Enum.EasingDirection.InOut)
+		local opencontainer = ts:Create(container,ti2,{Size = UDim2.new(1, 0,8.605, 0)})
+		local ti = TweenInfo.new(.15,Enum.EasingStyle.Sine,Enum.EasingDirection.InOut)
+		local closecontainer = ts:Create(container,ti2,{Size = UDim2.new(1,0,0,0)})
+			
+		open=not open
+		if open then
+			openbutton:Play()
+			opencontainer:Play()
+		else
+			closebutton:Play()
+			closecontainer:Play()
+		end
+	end)
+
 	local listlayout = self:newItem("UIListLayout",{
 		HorizontalAlignment = Enum.HorizontalAlignment.Center;
 		Parent = container;
@@ -107,7 +130,7 @@ function library:createWindow(name,data)
 	local functions = {}
 	function functions:makeButton(text,callback)
 		local button = library:newItem("TextButton",{ --err
-			Size = UDim2.new(0.96, 0,0.309, 0);
+			Size = UDim2.new(0.96, 0,0.093, 0);
 			BorderSizePixel = 0;
 			BackgroundColor3 = GetColorDelta(bgrColor,5);
 			Font = Enum.Font.Ubuntu;
@@ -120,6 +143,7 @@ function library:createWindow(name,data)
 			callback()
 		end)
 	end
+	
 	
 	
 	if drag then
