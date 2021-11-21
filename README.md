@@ -7,6 +7,10 @@ createWindow(name : <string>,{
    makeButton(<string> text, <function> callback)
    makeLabel(<string> text)
 ```
+
+Images
+
+![alt text](https://i.imgur.com/k6uq3Ux.png)
   
 Example
 ```lua
