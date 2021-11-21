@@ -101,13 +101,13 @@ function library:createWindow(name,data)
 	local listlayout = self:newItem("UIListLayout",{
 		HorizontalAlignment = Enum.HorizontalAlignment.Center;
 		Parent = container;
-		Padding = UDim.new(0,3)
+		Padding = UDim.new(0.02, 0)
 	})
 	
 	local functions = {}
 	function functions:makeButton(text,callback)
 		local button = library:newItem("TextButton",{ --err
-			Size = UDim2.new(0,169,0, 34);
+			Size = UDim2.new(0.96, 0,0.309, 0);
 			BorderSizePixel = 0;
 			BackgroundColor3 = GetColorDelta(bgrColor,5);
 			Font = Enum.Font.Ubuntu;
