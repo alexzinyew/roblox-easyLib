@@ -25,5 +25,5 @@ local functions = {
 
 window:makeButton("Button",functions.button1) -- when pressed, it will "Hello World!"
 
-window:makeLabel("Test") -- displays test below the button, it works in order.
+window:makeLabel("Test",Color3.fromRGB(255,255,255)) -- displays test below the button in a white color, it works in order.
 ```
