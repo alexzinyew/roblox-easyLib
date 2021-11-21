@@ -145,11 +145,12 @@ function library:createWindow(name,data)
 	
 	function functions:makeLabel(text,color)
 		local label = library:newItem("TextLabel",{
-			Size = UDim2.new(0.96, 0,0.093, 0);
+			Size = UDim2.new(0.96, 0,0.058, 0);
 			BorderSizePixel = 0;
 			BackgroundColor3 = GetColorDelta(bgrColor,5);
+			BackgroundTransparency = 1;
 			Font = Enum.Font.Ubuntu;
-			TextColor3 = Color3.fromRGB(255,255,255);
+			TextColor3 = color;
 			TextScaled = true;
 			Text = tostring(text);
 			Parent = container;
