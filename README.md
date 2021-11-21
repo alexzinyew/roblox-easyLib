@@ -27,3 +27,14 @@ window:makeButton("Button",functions.button1) -- when pressed, it will "Hello Wo
 
 window:makeLabel("Test",Color3.fromRGB(255,255,255)) -- displays test below the button in a white color, it works in order.
 ```
+
+Notes
+```
+You are able to use multiple window objects at once, as long as they are stored as different variables.
+The way of organizing functions in the example is optional you could also do something like:
+```lua
+window:makeButton("Button",function()
+	print("Hello World!")
+end)
+```
+```
